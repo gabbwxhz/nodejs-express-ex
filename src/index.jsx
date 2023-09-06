@@ -1,27 +1,11 @@
 import * as express from 'express'
+const app = express()
 
-const app = express() 
+import userController from './controller/userController'
+import postController from './controller/postController'
 
+app.use('/user', userController)
+app.use('/post', postController)
 
-// criação de rotas
-
-app.get('/', (req, res) => {
-    res.send('GET /')
-})
-
-app.post('/', (req, res) => {
-    res.status(201).send('POST /') // 201: codigo relacionado a criar alguma coisa
-})
-
-app.put('/', (req, res) => {
-    res.send('PUT /')
-})
-app.delete('/', (req, res) => {
-    res.send('DELETE /')
-})
-
-app.patch('/', (req, res) => {
-    res.send('PATCH /')
-})
 
 app.listen(3000, () => console.log(`online - http://localhost:3000`))
